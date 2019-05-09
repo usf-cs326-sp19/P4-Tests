@@ -17,7 +17,7 @@ pid=${!}
 wait_port "${port}"
 
 rm -rf "${TEST_DIR}/multi"
-wget --recursive -P "${TEST_DIR}/multi" "http://localhost:${port}/"
+timeout 5 wget --recursive -P "${TEST_DIR}/multi" "http://localhost:${port}/"
 actual=$(ls -1 "${TEST_DIR}/multi/"*"/" | sort)
 
 stop_server ${pid}

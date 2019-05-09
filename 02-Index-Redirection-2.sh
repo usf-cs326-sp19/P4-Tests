@@ -9,7 +9,7 @@ pid=${!}
 wait_port "${port}"
 
 expected=$(cat "${TEST_DIR}/html/syllabus/index.html")
-actual=$(wget -O- "http://localhost:${port}/syllabus/")
+actual=$(timeout 5 wget -O- "http://localhost:${port}/syllabus/")
 
 stop_server ${pid}
 

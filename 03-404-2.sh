@@ -8,7 +8,7 @@ setsid $TEST_DIR/start_server "${port}" &
 pid=${!}
 wait_port "${port}"
 
-actual=$(wget -O- "http://localhost:${port}/this/does/not/exist.html")
+actual=$(timeout 5 wget -O- "http://localhost:${port}/this/does/not/exist.html")
 return="${?}"
 
 stop_server ${pid}
